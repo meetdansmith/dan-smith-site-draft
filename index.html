@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dan Smith — Draft site v0.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0f0f0f;color:#fff;font-family:Inter,"Helvetica Neue",Arial,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+.annot{background:#2a2a2a;color:#aaa;font-size:13px;padding:8px 16px;text-align:center;font-family:monospace}
+.draft{display:inline-block;font-size:11px;color:#888;border:1px dashed #555;border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:middle;font-weight:400;letter-spacing:.03em;text-transform:lowercase}
+.o{color:#F7931A}
+.btn{display:inline-block;padding:14px 26px;border-radius:8px;font-weight:600;font-size:15px;text-align:center;border:0;font-family:inherit;cursor:pointer}
+.btn-p{background:#F7931A;color:#111}.btn-s{border:1px solid #555;color:#fff;background:transparent}
+.btn-sm{padding:8px 16px;font-size:13px;border:1px solid #F7931A;color:#F7931A;border-radius:6px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid #222;gap:16px}
+.logo{font-weight:800;font-size:20px;white-space:nowrap}.logo span{color:#F7931A}
+nav ul{display:flex;gap:32px;list-style:none;align-items:center;font-size:15px;color:#ccc}
+nav ul a.active{color:#fff;border-bottom:2px solid #F7931A;padding-bottom:3px}
+.burger{display:none;background:none;border:1px solid #444;color:#fff;border-radius:6px;padding:6px 10px;font-size:18px}
+section{padding:96px 0;border-bottom:1px solid #1d1d1d}
+h1{font-size:54px;line-height:1.1;letter-spacing:-.02em;margin:14px 0 22px}
+h2{font-size:34px;letter-spacing:-.01em;margin-bottom:12px;line-height:1.2}
+h3{font-size:22px;margin:10px 0}
+.lead{color:#bbb;font-size:19px;max-width:560px}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}
+.ph{background:repeating-linear-gradient(45deg,#1a1a1a,#1a1a1a 12px,#202020 12px,#202020 24px);border:1px dashed #444;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#777;font-size:14px;text-align:center}
+.eyebrow{color:#F7931A;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.card{background:#171717;border:1px solid #2a2a2a;border-radius:14px;padding:28px}
+.yes{display:flex;gap:14px;font-size:16px;color:#ddd}.yes b{color:#F7931A;font-size:20px;line-height:1.2}
+.quote{font-size:18px;color:#999;font-style:italic;min-height:90px}
+.who{display:flex;gap:12px;align-items:center;margin-top:20px;color:#aaa;font-size:14px}
+.av{width:44px;height:44px;border-radius:50%;background:#2a2a2a;border:1px dashed #555;flex:none}
+.step{display:flex;flex-direction:column;position:relative}
+.step p{color:#aaa;flex:1;margin-bottom:24px}
+.step.hl{border:2px solid #F7931A;background:#1c1610;box-shadow:0 0 40px rgba(247,147,26,.15)}
+.badge{position:absolute;top:-13px;left:24px;background:#F7931A;color:#111;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.news{background:#171310;border-top:1px solid #3a2a15;border-bottom:1px solid #3a2a15}
+.form{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.form input{flex:1;min-width:200px;max-width:380px;background:#0f0f0f;border:1px solid #444;border-radius:8px;padding:14px 16px;color:#fff;font-size:15px;font-family:inherit}
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center}
+.about p{color:#bbb;margin-bottom:14px;font-size:17px}
+footer{padding:64px 0 40px;color:#999;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
+footer h4{color:#fff;margin-bottom:14px;font-size:15px}
+footer li{list-style:none;margin-bottom:8px}footer li a:hover{color:#F7931A}
+.disc{border-top:1px solid #222;margin-top:48px;padding-top:20px;font-size:12px;color:#666;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.page{display:none}.page.on{display:block}
+/* calculator */
+.calc{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;margin-top:40px;align-items:start}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-size:14px;color:#bbb}
+.field input{background:#0f0f0f;border:1px solid #444;border-radius:8px;padding:12px 14px;color:#fff;font-size:16px;font-family:inherit;width:100%}
+.field input:focus{outline:none;border-color:#F7931A}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sub{font-size:13px;color:#888;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:8px 0 14px}
+.result{position:sticky;top:20px}
+.big{font-size:56px;font-weight:800;color:#F7931A;line-height:1.05;letter-spacing:-.02em;word-break:break-word}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #262626;color:#bbb;font-size:15px}.kv b{color:#fff}
+.muted{color:#888;font-size:13px}
+ul.list{list-style:none}ul.list li{padding:10px 0;border-bottom:1px solid #262626;color:#bbb}ul.list li:last-child{border:0}
+ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;color:#ddd;font-size:17px}ul.ticks li:before{content:"✓";color:#F7931A;font-weight:700}
+.price{font-size:44px;font-weight:800;margin:6px 0}
+.faq details{border-bottom:1px solid #262626;padding:18px 0}.faq summary{cursor:pointer;font-weight:600;font-size:17px}.faq p{color:#bbb;margin-top:10px}
+.num{width:34px;height:34px;border-radius:50%;background:#F7931A;color:#111;font-weight:800;display:flex;align-items:center;justify-content:center}
+#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#F7931A;color:#111;font-weight:700;padding:12px 20px;border-radius:30px;opacity:0;transition:.25s;pointer-events:none;z-index:9}
+#toast.show{opacity:1;transform:translateX(-50%)}
+@media(max-width:860px){
+ .wrap{padding:0 20px}
+ section{padding:56px 0}
+ h1{font-size:36px}h2{font-size:26px}.lead{font-size:17px}
+ .hero,.about,.calc,.fgrid,.grid2,.grid3{grid-template-columns:1fr;gap:20px}
+ .hero .ph{height:300px!important}.about .ph{height:280px!important}
+ .burger{display:block}
+ nav{flex-wrap:wrap}
+ nav ul{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:14px;padding-top:12px}
+ nav.open ul{display:flex}
+ .ctas{flex-direction:column}.ctas .btn{width:100%}
+ .form .btn{width:100%}.form input{max-width:none}
+ .big{font-size:40px}.result{position:static}
+ .row2{grid-template-columns:1fr}
+}
+</style></head><body>
+<div class="annot">Draft site v0.2, Oct 15 2026 · clickable prototype · all copy is draft</div>
+<div class="wrap">
+<nav id="nav"><a class="logo" href="#home">Dan Smith<span>.</span></a>
+<button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+<ul><li><a href="#home">Home</a></li><li><a href="#freedom-number">Freedom Number</a></li><li><a href="#resources">Resources</a></li><li><a href="#book">Book a call</a></li><li><a class="btn-sm" href="#home/newsletter">Newsletter</a></li></ul></nav></div>
+
+<!-- ================= HOME ================= -->
+<main class="page" id="p-home">
+<div class="wrap"><section class="hero" style="border:0">
+<div><span class="eyebrow">Bitcoin × money psychology</span><span class="draft">draft, pending ICP</span>
+<h1>Build a <span class="o">sovereign</span> relationship with money</h1>
+<p class="lead">Bitcoin and money psychology for people tired of working hard and still struggling to get ahead.</p>
+<div class="ctas" style="display:flex;gap:14px;margin-top:36px"><a class="btn btn-p" href="#freedom-number">Find your Freedom Number →</a><a class="btn btn-s" href="#home/newsletter">Read the newsletter</a></div></div>
+<div class="ph" style="height:460px">[Photo of Dan]<br>portrait, warm light</div>
+</section></div>
+
+<section><div class="wrap">
+<h2 style="display:inline">Perhaps you're here because…</h2><span class="draft">draft, pending ICP</span>
+<div class="grid3">
+<div class="card yes"><b>✓</b>You're curious about Bitcoin but don't really understand it yet.</div>
+<div class="card yes"><b>✓</b>You work hard, but inflation keeps you from getting ahead.</div>
+<div class="card yes"><b>✓</b>You're stuck in debt and money cycles that feel emotional, not mathematical.</div>
+<div class="card yes"><b>✓</b>You want freedom, but have no number to aim for.</div>
+<div class="card yes"><b>✓</b>You've bought some Bitcoin, but your conviction wobbles.</div>
+<div class="card yes"><b>✓</b>You sense your money story is holding you back.</div>
+</div></div></section>
+
+<section><div class="wrap">
+<span class="eyebrow">What people say</span><span class="draft">placeholder: real quotes needed</span>
+<div class="grid2">
+<div class="card"><p class="quote">[Testimonial: Alana]</p><div class="who"><div class="av"></div>Alana · [role / location TBD]</div></div>
+<div class="card"><p class="quote">[Testimonial: Dan's brother]</p><div class="who"><div class="av"></div>[Name TBD] · Dan's brother</div></div>
+</div></div></section>
+
+<section><div class="wrap">
+<h2 style="display:inline">Choose your next step</h2><span class="draft">draft copy</span>
+<div class="grid3" style="margin-top:52px">
+<div class="card step hl"><span class="badge">Start here</span><span class="eyebrow">Free tool</span><h3>Freedom Number calculator</h3><p>Find the number that buys your freedom, and how far Bitcoin could take you toward it.</p><a class="btn btn-p" href="#freedom-number">Calculate my number</a></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">For when you want support</span><h3>Book a 1:1 call</h3><p>Work through your money story, conviction and next moves together, one on one.</p><a class="btn btn-s" href="#book">Book a call</a></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">Free resources</span><h3>Study Bitcoin</h3><p>Curated reading, podcasts and guides to understand Bitcoin at your own pace.</p><a class="btn btn-s" href="#resources">Browse resources</a></div>
+</div></div></section>
+
+<section class="news" id="newsletter"><div class="wrap" style="text-align:center">
+<span class="eyebrow">The Saturday letter</span><span class="draft">draft copy</span>
+<h2 style="margin-top:12px;max-width:760px;margin-left:auto;margin-right:auto">One high-value article every Saturday on Bitcoin, sovereignty and money psychology</h2>
+<div class="form" style="justify-content:center"><input type="email" placeholder="you@email.com"><button class="btn btn-p soon">Subscribe</button></div>
+<p style="color:#777;font-size:13px;margin-top:14px">No spam. Unsubscribe anytime.</p>
+</div></section>
+
+<section><div class="wrap about">
+<div class="ph" style="height:420px">[Photo of Dan]<br>candid / at desk</div>
+<div><span class="eyebrow">About Dan</span><span class="draft">draft copy</span>
+<h2 style="margin:12px 0 20px">Engineer turned Bitcoiner</h2>
+<p>I trained as an engineer, then spent 20 years on personal growth. As a coach I helped clients with the emotional and nervous-system side of change.</p>
+<p>For years I was caught in debt cycles that no spreadsheet could fix. Studying Bitcoin changed my relationship with money, and I finally broke out of them.</p>
+<p>Now I write about what I've learned: where Bitcoin meets money psychology and sovereignty.</p>
+<a class="o" style="font-weight:600" href="https://x.com/meetdansmith" target="_blank" rel="noopener">Follow me on X @meetdansmith →</a></div>
+</div></section>
+</main>
+
+<!-- ================= FREEDOM NUMBER ================= -->
+<main class="page" id="p-freedom-number">
+<section style="padding-bottom:64px"><div class="wrap">
+<span class="eyebrow">Free tool</span><span class="draft">draft copy</span>
+<h1>What's your <span class="o">Freedom Number</span>?</h1>
+<p class="lead">Price your dream life, account for inflation, and see the net worth you'd need to fund it for good.</p>
+<div class="calc">
+<div class="card">
+<div class="sub">1 · Your dream life, per year (today's $)</div>
+<div class="row2">
+<div class="field"><label for="c-housing">Housing</label><input id="c-housing" type="number" min="0" inputmode="decimal" placeholder="e.g. 30000"></div>
+<div class="field"><label for="c-travel">Travel</label><input id="c-travel" type="number" min="0" inputmode="decimal" placeholder="e.g. 12000"></div>
+<div class="field"><label for="c-life">Lifestyle (food, health, fun)</label><input id="c-life" type="number" min="0" inputmode="decimal" placeholder="e.g. 25000"></div>
+<div class="field"><label for="c-give">Giving</label><input id="c-give" type="number" min="0" inputmode="decimal" placeholder="e.g. 5000"></div>
+<div class="field"><label for="c-other">Other</label><input id="c-other" type="number" min="0" inputmode="decimal" placeholder="e.g. 8000"></div>
+</div>
+<div class="sub" style="margin-top:12px">2 · Your assumptions</div>
+<div class="row2">
+<div class="field"><label for="c-age">Current age</label><input id="c-age" type="number" min="0" inputmode="numeric" placeholder="e.g. 40"></div>
+<div class="field"><label for="c-target">Target age for freedom</label><input id="c-target" type="number" min="0" inputmode="numeric" placeholder="e.g. 55"></div>
+<div class="field"><label for="c-inf">Expected inflation %</label><input id="c-inf" type="number" step="0.1" value="3"></div>
+<div class="field"><label for="c-swr">Safe withdrawal rate %</label><input id="c-swr" type="number" step="0.1" min="0.1" value="4"></div>
+</div>
+</div>
+<div class="card step hl result">
+<span class="eyebrow">Your Freedom Number</span>
+<div class="big" id="r-fn" style="margin:10px 0 6px">$0</div>
+<p class="muted" style="flex:none;margin-bottom:18px">Net worth needed = inflation-adjusted annual cost ÷ withdrawal rate</p>
+<div class="kv"><span>Dream life today / yr</span><b id="r-today">$0</b></div>
+<div class="kv"><span>Years until freedom</span><b id="r-years">0</b></div>
+<div class="kv"><span>Annual cost at target age</span><b id="r-adj">$0</b></div>
+<div class="kv" style="border:0"><span>Withdrawal rate</span><b id="r-swr">4%</b></div>
+<p class="muted" id="r-note" style="margin-top:14px;flex:none">Fill in your costs and ages to see your number.</p>
+</div>
+</div></div></section>
+
+<section class="news"><div class="wrap" style="text-align:center">
+<span class="eyebrow">Next step</span><span class="draft">draft copy</span>
+<h2 style="margin-top:12px">Get your personalised report + roadmap</h2>
+<p class="lead" style="margin:0 auto">Your number, what it means, and a step-by-step roadmap toward it, sent to your inbox.</p>
+<div class="form" style="justify-content:center"><input type="email" placeholder="you@email.com"><button class="btn btn-p soon">Get my report</button></div>
+</div></section>
+<div class="wrap"><p class="muted" style="padding:28px 0">Disclaimer: this calculator is for education only and is not financial advice. Results are estimates based on your assumptions; real returns, inflation and withdrawal outcomes vary.</p></div>
+</main>
+
+<!-- ================= RESOURCES ================= -->
+<main class="page" id="p-resources">
+<section style="padding-bottom:64px"><div class="wrap">
+<span class="eyebrow">Free resources</span><span class="draft">draft copy</span>
+<h1>Study <span class="o">Bitcoin</span></h1>
+<p class="lead">A curated path to understanding Bitcoin at your own pace, from first principles to holding your own keys.</p>
+<div class="grid3">
+<div class="card step hl"><span class="badge">Start here</span><span class="eyebrow">01</span><h3>Start here</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">02</span><h3>Books</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">03</span><h3>Podcasts</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+</div>
+<div class="grid2">
+<div class="card step"><span class="eyebrow" style="color:#aaa">04</span><h3>Tools and wallets</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">05</span><h3>Self-custody guides</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+</div></div></section>
+<section class="news"><div class="wrap" style="text-align:center">
+<span class="eyebrow">The Saturday letter</span><span class="draft">draft copy</span>
+<h2 style="margin-top:12px;max-width:760px;margin-left:auto;margin-right:auto">Keep learning: one high-value article every Saturday</h2>
+<div class="form" style="justify-content:center"><input type="email" placeholder="you@email.com"><button class="btn btn-p soon">Subscribe</button></div>
+<p style="color:#777;font-size:13px;margin-top:14px">No spam. Unsubscribe anytime.</p>
+</div></section>
+</main>
+
+<!-- ================= BOOK ================= -->
+<main class="page" id="p-book">
+<div class="wrap"><section class="hero" style="border:0">
+<div><span class="eyebrow">1:1 support</span><span class="draft">draft, pending ICP</span>
+<h1>Change your <span class="o">relationship</span> with money, with someone in your corner</h1>
+<p class="lead">Personal sessions where Bitcoin understanding meets the emotional side of money, so your next moves come from clarity, not anxiety.</p>
+<div class="ctas" style="display:flex;gap:14px;margin-top:36px"><a class="btn btn-p" href="#book/offers">See options →</a><a class="btn btn-s" href="#book/faq">Read the FAQ</a></div></div>
+<div class="ph" style="height:420px">[Photo of Dan]<br>on a call, relaxed</div>
+</section></div>
+
+<section><div class="wrap grid2" style="margin-top:0;gap:48px">
+<div><h2 style="display:inline">This is for you if…</h2><span class="draft">draft copy</span>
+<ul class="ticks" style="margin-top:28px">
+<li>You want to understand Bitcoin, but the noise leaves you more confused.</li>
+<li>Money decisions make your chest tighten, and you want that to change.</li>
+<li>You keep repeating the same money cycles despite knowing better.</li>
+<li>You've got some Bitcoin, but your conviction wobbles every time price moves.</li>
+<li>You want a clear number and a plan, not hype.</li>
+</ul></div>
+<div><h2 style="display:inline">What happens on the call</h2><span class="draft">draft copy</span>
+<div style="margin-top:28px;display:grid;gap:20px">
+<div style="display:flex;gap:16px"><div class="num">1</div><div><b>Your money story</b><p style="color:#aaa">Where you are now and the patterns that keep showing up.</p></div></div>
+<div style="display:flex;gap:16px"><div class="num">2</div><div><b>Bitcoin, plainly explained</b><p style="color:#aaa">Your questions answered at your level, no jargon.</p></div></div>
+<div style="display:flex;gap:16px"><div class="num">3</div><div><b>Your next moves</b><p style="color:#aaa">You leave with clear, practical next steps that feel calm, not rushed.</p></div></div>
+</div></div>
+</div></section>
+
+<section id="offers"><div class="wrap">
+<h2 style="display:inline">Choose your support</h2><span class="draft">draft copy</span>
+<div class="grid2" style="max-width:900px">
+<div class="card step"><span class="eyebrow" style="color:#aaa">Single call</span><div class="price">$250</div><p>One focused 1:1 session. A great standalone deep-dive, and also serves as an intro if you want to keep working together.</p><button class="btn btn-s soon">Book a single call</button></div>
+<div class="card step hl"><span class="badge">Most support</span><span class="eyebrow">5-call package</span><div class="price">$1,250</div><p>Five 1:1 sessions to work through your money story, build conviction and put a plan into action over time.</p><button class="btn btn-p soon">Book the package</button></div>
+</div></div></section>
+
+<section><div class="wrap">
+<span class="eyebrow">What people say</span><span class="draft">placeholder: real quotes needed</span>
+<div class="grid2">
+<div class="card"><p class="quote">[Testimonial: Sean, coaching client]</p><div class="who"><div class="av"></div>Sean · coaching client</div></div>
+<div class="card"><p class="quote">[Testimonial: Tim, Bitcoin peer, character reference]</p><div class="who"><div class="av"></div>Tim · Bitcoin peer</div></div>
+</div></div></section>
+
+<section id="faq"><div class="wrap" style="max-width:860px">
+<h2 style="display:inline">FAQ</h2><span class="draft">draft copy</span>
+<div class="faq" style="margin-top:20px">
+<details open><summary>Is this financial advice?</summary><p>No. Sessions are education and coaching only. I don't tell you what to buy or sell; I help you understand Bitcoin and your relationship with money so you can make your own decisions.</p></details>
+<details><summary>Who is this for?</summary><p>People who work hard but feel stuck financially, are curious about Bitcoin, or want their money decisions to come from calm rather than stress.</p></details>
+<details><summary>What if I'm brand new to Bitcoin?</summary><p>That's completely fine. We start where you are, in plain language. No prior knowledge needed.</p></details>
+</div></div></section>
+
+<section class="news"><div class="wrap" style="text-align:center">
+<span class="draft">draft copy</span>
+<h2 style="margin-top:12px">Ready to start?</h2>
+<p class="lead" style="margin:0 auto 28px">Book a single call to see if working together is right for you.</p>
+<button class="btn btn-p soon">Book a call</button>
+</div></section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer><div class="wrap">
+<div class="fgrid">
+<div><div class="logo" style="margin-bottom:12px">Dan Smith<span>.</span></div><p>Get the Saturday article in your inbox.</p>
+<div class="form" style="margin-top:16px"><input type="email" placeholder="you@email.com" style="padding:11px 14px"><button class="btn btn-p soon" style="padding:11px 18px">Subscribe</button></div></div>
+<div><h4>Pages</h4><ul><li><a href="#home">Home</a></li><li><a href="#freedom-number">Freedom Number</a></li><li><a href="#resources">Resources</a></li><li><a href="#book">Book a call</a></li></ul></div>
+<div><h4>Connect</h4><ul><li><a href="https://x.com/meetdansmith" target="_blank" rel="noopener">X: @meetdansmith</a></li></ul></div>
+</div>
+<div class="disc"><span>Education only, not financial advice.</span><span>© 2026 Dan Smith</span></div>
+</div></footer>
+<div id="toast">Coming soon</div>
+
+<script>
+var PAGES=['home','freedom-number','resources','book'];
+function route(){
+ var h=(location.hash||'#home').slice(1).split('/'),p=PAGES.indexOf(h[0])>=0?h[0]:'home',anchor=h[1];
+ PAGES.forEach(function(x){document.getElementById('p-'+x).classList.toggle('on',x===p)});
+ document.querySelectorAll('nav ul a').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+p)});
+ document.getElementById('nav').classList.remove('open');
+ var t=anchor&&document.getElementById(anchor);
+ if(t)t.scrollIntoView();else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+var tt;document.querySelectorAll('.soon').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();var t=document.getElementById('toast');t.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('show')},1800)})});
+// Freedom Number calculator
+function v(id){var n=parseFloat(document.getElementById(id).value);return isFinite(n)?n:0}
+function usd(n){return '$'+Math.round(n).toLocaleString('en-US')}
+function calc(){
+ var today=['c-housing','c-travel','c-life','c-give','c-other'].reduce(function(s,id){return s+Math.max(0,v(id))},0);
+ var age=v('c-age'),target=v('c-target'),inf=v('c-inf')/100,swr=v('c-swr')/100;
+ var years=Math.max(0,target-age);
+ var adj=today*Math.pow(1+inf,years);
+ var fn=swr>0?adj/swr:0;
+ document.getElementById('r-today').textContent=usd(today);
+ document.getElementById('r-years').textContent=years;
+ document.getElementById('r-adj').textContent=usd(adj);
+ document.getElementById('r-swr').textContent=(swr*100).toFixed(1).replace(/\.0$/,'')+'%';
+ document.getElementById('r-fn').textContent=usd(fn);
+ document.getElementById('r-note').textContent=swr<=0?'Enter a withdrawal rate above 0%.':(target&&age&&target<age?'Target age is below current age; using 0 years.':'Assumes your dream-life costs grow with inflation until your target age.');
+ return {today:today,years:years,adj:adj,fn:fn};
+}
+document.querySelectorAll('.calc input').forEach(function(i){i.addEventListener('input',calc)});calc();
+</script>
+</body></html>
