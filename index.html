@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dan Smith — Draft site v0.2</title>
+<title>Dan Smith — Draft site v0.3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -35,9 +35,14 @@ h3{font-size:22px;margin:10px 0}
 .who{display:flex;gap:12px;align-items:center;margin-top:20px;color:#aaa;font-size:14px}
 .av{width:44px;height:44px;border-radius:50%;background:#2a2a2a;border:1px dashed #555;flex:none}
 .step{display:flex;flex-direction:column;position:relative}
-.step p{color:#aaa;flex:1;margin-bottom:24px}
+.step p{color:#aaa;flex:1 1 auto;margin-bottom:24px}
 .step.hl{border:2px solid #F7931A;background:#1c1610;box-shadow:0 0 40px rgba(247,147,26,.15)}
 .badge{position:absolute;top:-13px;left:24px;background:#F7931A;color:#111;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.offer-cta{margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;min-height:86px}
+.step p.once{color:#fff;font-size:13px;font-weight:400;line-height:1.35;letter-spacing:.01em;margin:10px 0 0;flex:none}
+.res-name{display:block;color:#fff;font-weight:600;font-size:15px;line-height:1.35}
+.res-desc{display:block;color:#8d8d8d;font-size:13px;line-height:1.45;margin-top:4px;font-weight:400}
+ul.list.essays li{color:#eee;font-weight:600;font-size:15px;line-height:1.4}
 .news{background:#171310;border-top:1px solid #3a2a15;border-bottom:1px solid #3a2a15}
 .form{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
 .form input{flex:1;min-width:200px;max-width:380px;background:#0f0f0f;border:1px solid #444;border-radius:8px;padding:14px 16px;color:#fff;font-size:15px;font-family:inherit}
@@ -45,7 +50,8 @@ h3{font-size:22px;margin:10px 0}
 .about p{color:#bbb;margin-bottom:14px;font-size:17px}
 footer{padding:64px 0 40px;color:#999;font-size:14px}
 .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
-footer h4{color:#fff;margin-bottom:14px;font-size:15px}
+footer h2{color:#fff;margin-bottom:14px;font-size:15px;letter-spacing:0;line-height:1.3;font-weight:700}
+.card h2{font-size:22px;letter-spacing:0;margin:10px 0;line-height:1.25;font-weight:700}
 footer li{list-style:none;margin-bottom:8px}footer li a:hover{color:#F7931A}
 .disc{border-top:1px solid #222;margin-top:48px;padding-top:20px;font-size:12px;color:#666;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .page{display:none}.page.on{display:block}
@@ -68,30 +74,32 @@ ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;co
 .num{width:34px;height:34px;border-radius:50%;background:#F7931A;color:#111;font-weight:800;display:flex;align-items:center;justify-content:center}
 #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#F7931A;color:#111;font-weight:700;padding:12px 20px;border-radius:30px;opacity:0;transition:.25s;pointer-events:none;z-index:9}
 #toast.show{opacity:1;transform:translateX(-50%)}
+@media(max-width:1000px){
+ .burger{display:block}
+ nav{flex-wrap:wrap}
+ nav ul{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:14px;padding-top:12px}
+ nav.open ul{display:flex}
+}
 @media(max-width:860px){
  .wrap{padding:0 20px}
  section{padding:56px 0}
  h1{font-size:36px}h2{font-size:26px}.lead{font-size:17px}
  .hero,.about,.calc,.fgrid,.grid2,.grid3{grid-template-columns:1fr;gap:20px}
  .hero .ph{height:300px!important}.about .ph{height:280px!important}
- .burger{display:block}
- nav{flex-wrap:wrap}
- nav ul{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:14px;padding-top:12px}
- nav.open ul{display:flex}
  .ctas{flex-direction:column}.ctas .btn{width:100%}
  .form .btn{width:100%}.form input{max-width:none}
  .big{font-size:40px}.result{position:static}
  .row2{grid-template-columns:1fr}
 }
 </style></head><body>
-<div class="annot">Draft site v0.2, Oct 15 2026 · clickable prototype · all copy is draft</div>
+<div class="annot">Draft site v0.3, Oct 15 2026 · clickable prototype · all copy is draft</div>
 <div class="wrap">
 <nav id="nav"><a class="logo" href="#home">Dan Smith<span>.</span></a>
 <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
-<ul><li><a href="#home">Home</a></li><li><a href="#freedom-number">Freedom Number</a></li><li><a href="#resources">Resources</a></li><li><a href="#book">Book a call</a></li><li><a class="btn-sm" href="#home/newsletter">Newsletter</a></li></ul></nav></div>
+<ul><li><a href="#home">Home</a></li><li><a href="#freedom-number">Freedom Number</a></li><li><a href="#essays">Essays</a></li><li><a href="#resources">Resources</a></li><li><a href="#book">Book a call</a></li><li><a class="btn-sm" href="#home/newsletter">Newsletter</a></li></ul></nav></div>
 
 <!-- ================= HOME ================= -->
-<main class="page" id="p-home">
+<main class="page" id="p-home" hidden>
 <div class="wrap"><section class="hero" style="border:0">
 <div><span class="eyebrow">Bitcoin × money psychology</span><span class="draft">draft, pending ICP</span>
 <h1>Build a <span class="o">sovereign</span> relationship with money</h1>
@@ -145,7 +153,7 @@ ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;co
 </main>
 
 <!-- ================= FREEDOM NUMBER ================= -->
-<main class="page" id="p-freedom-number">
+<main class="page" id="p-freedom-number" hidden>
 <section style="padding-bottom:64px"><div class="wrap">
 <span class="eyebrow">Free tool</span><span class="draft">draft copy</span>
 <h1>What's your <span class="o">Freedom Number</span>?</h1>
@@ -190,19 +198,19 @@ ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;co
 </main>
 
 <!-- ================= RESOURCES ================= -->
-<main class="page" id="p-resources">
+<main class="page" id="p-resources" hidden>
 <section style="padding-bottom:64px"><div class="wrap">
-<span class="eyebrow">Free resources</span><span class="draft">draft copy</span>
+<span class="eyebrow">Free resources</span><span class="draft">placeholder copy</span>
 <h1>Study <span class="o">Bitcoin</span></h1>
-<p class="lead">A curated path to understanding Bitcoin at your own pace, from first principles to holding your own keys.</p>
+<p class="lead">A curated path to understanding Bitcoin at your own pace, from first principles to holding your own keys. Titles below are placeholders for layout review.</p>
 <div class="grid3">
-<div class="card step hl"><span class="badge">Start here</span><span class="eyebrow">01</span><h3>Start here</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
-<div class="card step"><span class="eyebrow" style="color:#aaa">02</span><h3>Books</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
-<div class="card step"><span class="eyebrow" style="color:#aaa">03</span><h3>Podcasts</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+<div class="card step hl"><span class="badge">Start here</span><span class="eyebrow">01</span><h2>Start here</h2><p>The first ideas, before any tool.</p><ul class="list"><li><span class="res-name">Bitcoin in plain language</span><span class="res-desc">What it is, what it is not, and why serious people study it.</span></li><li><span class="res-name">Your money story on one page</span><span class="res-desc">Notice the beliefs you already bring to every financial decision.</span></li><li><span class="res-name">Three questions before you act</span><span class="res-desc">A short pause before you buy, sell, move coins, or argue.</span></li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">02</span><h2>Books</h2><p>Longer reading, when you want to go slowly.</p><ul class="list"><li><span class="res-name">Sound money, simply told</span><span class="res-desc">Placeholder for a short book on why the unit of money matters.</span></li><li><span class="res-name">The psychology of enough</span><span class="res-desc">Placeholder for a book on scarcity, status, and sufficiency.</span></li><li><span class="res-name">Keys, custody, responsibility</span><span class="res-desc">Placeholder for a practical book on holding Bitcoin yourself.</span></li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">03</span><h2>Podcasts</h2><p>Long conversations, instead of a noisy feed.</p><ul class="list"><li><span class="res-name">Questions, answered slowly</span><span class="res-desc">Placeholder for a show that explains Bitcoin without jargon.</span></li><li><span class="res-name">Money beliefs, out loud</span><span class="res-desc">Placeholder for interviews on the emotional side of money.</span></li><li><span class="res-name">Stories of self-custody</span><span class="res-desc">Placeholder for people who took responsibility for their keys.</span></li></ul></div>
 </div>
 <div class="grid2">
-<div class="card step"><span class="eyebrow" style="color:#aaa">04</span><h3>Tools and wallets</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
-<div class="card step"><span class="eyebrow" style="color:#aaa">05</span><h3>Self-custody guides</h3><ul class="list"><li>[resource TBD]</li><li>[resource TBD]</li><li>[resource TBD]</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">04</span><h2>Tools and wallets</h2><p>Simple tools for holding what you save.</p><ul class="list"><li><span class="res-name">Hardware wallet notes</span><span class="res-desc">Placeholder comparison focused on safety and simplicity.</span></li><li><span class="res-name">A seed phrase you can protect</span><span class="res-desc">Placeholder checklist for writing it down, storing it, and never sharing it.</span></li><li><span class="res-name">A record of what you hold</span><span class="res-desc">Placeholder tracker for savings. No prices and no charts.</span></li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">05</span><h2>Self-custody guides</h2><p>Practical steps for taking ownership.</p><ul class="list"><li><span class="res-name">What holding your own keys means</span><span class="res-desc">Placeholder explainer on custody, exchanges, and responsibility.</span></li><li><span class="res-name">Moving coins for the first time</span><span class="res-desc">Placeholder walkthrough, one calm step at a time.</span></li><li><span class="res-name">Slow down here</span><span class="res-desc">Placeholder notes on rushed backups, screenshots, and cloud copies.</span></li></ul></div>
 </div></div></section>
 <section class="news"><div class="wrap" style="text-align:center">
 <span class="eyebrow">The Saturday letter</span><span class="draft">draft copy</span>
@@ -212,8 +220,39 @@ ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;co
 </div></section>
 </main>
 
+<!-- ================= ESSAYS ================= -->
+<main class="page" id="p-essays" hidden>
+<section class="news"><div class="wrap" style="text-align:center">
+<span class="eyebrow">The Saturday letter</span><span class="draft">placeholder archive</span>
+<h1 style="max-width:840px;margin-left:auto;margin-right:auto">Essays on Bitcoin and the psychology of money</h1>
+<p class="lead" style="margin-left:auto;margin-right:auto">Beliefs, fear, conviction, and sovereignty. Get the next Saturday letter, then browse the archive by topic.</p>
+<div class="form" style="justify-content:center"><input type="email" placeholder="you@email.com" aria-label="Email address" autocomplete="email"><button class="btn btn-p soon" type="button">Subscribe</button></div>
+<p style="color:#777;font-size:13px;margin-top:14px">No spam. Unsubscribe anytime.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2 style="display:inline">Browse by topic</h2><span class="draft">placeholder titles</span>
+<p class="lead" style="margin-top:14px">Stand-in essays for layout review. Real Saturday letters will replace these titles.</p>
+<div class="grid3">
+<div class="card step hl"><span class="badge">Start here</span><span class="eyebrow">01</span><h3>Money beliefs</h3><p>The stories you inherited about money, safety, and what you are allowed to want.</p><div class="sub">Top essays</div><ul class="list essays"><li>The money story you didn't write</li><li>What enough meant at home</li><li>The belief underneath the budget</li><li>Who you were told money is for</li><li>A sentence about wealth worth retiring</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">02</span><h3>Fear and scarcity</h3><p>How fear spends, hoards, and freezes, even when the spreadsheet says you are fine.</p><div class="sub">Top essays</div><ul class="list essays"><li>That tightness is information</li><li>Scarcity that survives a raise</li><li>Why checking the price feels like safety</li><li>The urge to fix it right now</li><li>Staying present when you want to run</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">03</span><h3>Conviction</h3><p>Staying with Bitcoin when the news, other people, and your nerves all argue.</p><div class="sub">Top essays</div><ul class="list essays"><li>Conviction is something you practice</li><li>What to do when belief wobbles</li><li>Choose the voices in the room</li><li>Steadiness that doesn't depend on the news</li><li>Where conviction becomes stubbornness</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">04</span><h3>Sovereignty</h3><p>Responsibility, keys, and the psychology of owning your decisions.</p><div class="sub">Top essays</div><ul class="list essays"><li>Responsibility, before it feels noble</li><li>What you hand over when you trust someone else</li><li>Holding your own keys is an emotional skill</li><li>A quiet case for self-custody</li><li>Sovereignty without performing it</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">05</span><h3>Wealth psychology</h3><p>Identity, guilt, and status, and letting a number change without losing yourself.</p><div class="sub">Top essays</div><ul class="list essays"><li>The part of you that can't receive more</li><li>Guilt and a number that grew</li><li>Spending for status without noticing</li><li>Keep your values when the number changes</li><li>Who you allow yourself to become</li></ul></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">06</span><h3>Bitcoin, plainly</h3><p>What Bitcoin is for, in plain language. Understanding, not price calls.</p><div class="sub">Top essays</div><ul class="list essays"><li>Bitcoin, explained without a price</li><li>Money is a story we share</li><li>Saving is a relationship with time</li><li>Separating signal from argument</li><li>First principles for people who want calm</li></ul></div>
+</div></div></section>
+
+<section class="news"><div class="wrap" style="text-align:center">
+<span class="eyebrow">The Saturday letter</span><span class="draft">draft copy</span>
+<h2 style="margin-top:12px;max-width:760px;margin-left:auto;margin-right:auto">Get the next essay in your inbox</h2>
+<p class="lead" style="margin-left:auto;margin-right:auto">One high-value article every Saturday on Bitcoin, sovereignty, and money psychology.</p>
+<div class="form" style="justify-content:center"><input type="email" placeholder="you@email.com" aria-label="Email address" autocomplete="email"><button class="btn btn-p soon" type="button">Subscribe</button></div>
+<p style="color:#777;font-size:13px;margin-top:14px">No spam. Unsubscribe anytime.</p>
+</div></section>
+</main>
+
 <!-- ================= BOOK ================= -->
-<main class="page" id="p-book">
+<main class="page" id="p-book" hidden>
 <div class="wrap"><section class="hero" style="border:0">
 <div><span class="eyebrow">1:1 support</span><span class="draft">draft, pending ICP</span>
 <h1>Change your <span class="o">relationship</span> with money, with someone in your corner</h1>
@@ -242,8 +281,8 @@ ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;co
 <section id="offers"><div class="wrap">
 <h2 style="display:inline">Choose your support</h2><span class="draft">draft copy</span>
 <div class="grid2" style="max-width:900px">
-<div class="card step"><span class="eyebrow" style="color:#aaa">Single call</span><div class="price">$250</div><p>One focused 1:1 session. A great standalone deep-dive, and also serves as an intro if you want to keep working together.</p><button class="btn btn-s soon">Book a single call</button></div>
-<div class="card step hl"><span class="badge">Most support</span><span class="eyebrow">5-call package</span><div class="price">$1,250</div><p>Five 1:1 sessions to work through your money story, build conviction and put a plan into action over time.</p><button class="btn btn-p soon">Book the package</button></div>
+<div class="card step"><span class="eyebrow" style="color:#aaa">Single call</span><div class="price">$300</div><p>One focused 1:1 session. A great standalone deep-dive, and also serves as an intro if you want to keep working together.</p><div class="offer-cta"><button class="btn btn-s soon" type="button">Book a single call</button><p class="once">One-time only</p></div></div>
+<div class="card step hl"><span class="badge">Most support</span><span class="eyebrow">5-call package</span><div class="price">$1,250</div><p>Five 1:1 sessions to work through your money story, build conviction and put a plan into action over time.</p><div class="offer-cta"><button class="btn btn-p soon" type="button">Book the package</button></div></div>
 </div></div></section>
 
 <section><div class="wrap">
@@ -274,18 +313,22 @@ ul.ticks{list-style:none}ul.ticks li{display:flex;gap:12px;margin-bottom:14px;co
 <div class="fgrid">
 <div><div class="logo" style="margin-bottom:12px">Dan Smith<span>.</span></div><p>Get the Saturday article in your inbox.</p>
 <div class="form" style="margin-top:16px"><input type="email" placeholder="you@email.com" style="padding:11px 14px"><button class="btn btn-p soon" style="padding:11px 18px">Subscribe</button></div></div>
-<div><h4>Pages</h4><ul><li><a href="#home">Home</a></li><li><a href="#freedom-number">Freedom Number</a></li><li><a href="#resources">Resources</a></li><li><a href="#book">Book a call</a></li></ul></div>
-<div><h4>Connect</h4><ul><li><a href="https://x.com/meetdansmith" target="_blank" rel="noopener">X: @meetdansmith</a></li></ul></div>
+<div><h2>Pages</h2><ul><li><a href="#home">Home</a></li><li><a href="#freedom-number">Freedom Number</a></li><li><a href="#essays">Essays</a></li><li><a href="#resources">Resources</a></li><li><a href="#book">Book a call</a></li></ul></div>
+<div><h2>Connect</h2><ul><li><a href="https://x.com/meetdansmith" target="_blank" rel="noopener">X: @meetdansmith</a></li></ul></div>
 </div>
 <div class="disc"><span>Education only, not financial advice.</span><span>© 2026 Dan Smith</span></div>
 </div></footer>
 <div id="toast">Coming soon</div>
 
 <script>
-var PAGES=['home','freedom-number','resources','book'];
+var PAGES=['home','freedom-number','essays','resources','book'];
 function route(){
  var h=(location.hash||'#home').slice(1).split('/'),p=PAGES.indexOf(h[0])>=0?h[0]:'home',anchor=h[1];
- PAGES.forEach(function(x){document.getElementById('p-'+x).classList.toggle('on',x===p)});
+ PAGES.forEach(function(x){
+  var el=document.getElementById('p-'+x),on=x===p;
+  el.classList.toggle('on',on);
+  if(on)el.removeAttribute('hidden');else el.setAttribute('hidden','');
+ });
  document.querySelectorAll('nav ul a').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+p)});
  document.getElementById('nav').classList.remove('open');
  var t=anchor&&document.getElementById(anchor);
